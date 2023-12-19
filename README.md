@@ -4,9 +4,9 @@
 
 ### Steps:
  - [X] Ideia base do Projeto
- - [ ] Decisão das tecnologias e ferramentas utilizadas.
- - [ ] Arquiteturas e padroes adotados.
- - [ ] Iniciando estrutura do projeto.
+ - [X] Decisão das tecnologias e ferramentas utilizadas.
+ - [X] Arquiteturas e padroes adotados.
+ - [ ] Estrutura do projeto.
  - [ ] Continuação...
 
 <br>
@@ -15,3 +15,35 @@
 
 <p>Plataforma de aluguel de carros.</p>
 <p>A ideia do projeto é criar uma aplicação onde para o cliente é possivel alugar carros entre determinadas datas, e para os gerentes, sera possivel registrar novos carros, deletar carros presentes para aluguel ou modifica-los</p>
+
+### Tecnologias e Ferramentas
+
+<p>Para Backend:</p>
+
+- Node.js
+- Typescript
+- Express
+- Sequelize
+- JWT
+- MySQL ou Postgresql
+
+  <br>
+
+<p>Para Front-end: </p>
+
+- React
+- Typescript
+- Sass
+
+
+
+### Arquitetura
+
+<p>Arquitetura de Camadas MSC</p>
+
+### Estrutura do projeto
+
+<p>Para Backend: </p>
+
+
+<p>Para Front-end</p>
