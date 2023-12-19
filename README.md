@@ -3,7 +3,7 @@
 <p align="justify"> Descrição do Projeto </p>
 
 ### Steps:
- - [ ] Idealização do Projeto
+ - [X] Ideia base do Projeto
  - [ ] Decisão das tecnologias e ferramentas utilizadas.
  - [ ] Arquiteturas e padroes adotados.
  - [ ] Iniciando estrutura do projeto.
@@ -11,4 +11,7 @@
 
 <br>
 
-### Em Construção...
+### Ideia base do Projeto
+
+<p>Plataforma de aluguel de carros.</p>
+<p>A ideia do projeto é criar uma aplicação onde para o cliente é possivel alugar carros entre determinadas datas, e para os gerentes, sera possivel registrar novos carros, deletar carros presentes para aluguel ou modifica-los</p>
