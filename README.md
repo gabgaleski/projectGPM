@@ -6,7 +6,7 @@
  - [X] Ideia base do Projeto
  - [X] Decisão das tecnologias e ferramentas utilizadas.
  - [X] Arquiteturas e padroes adotados.
- - [ ] Estrutura do projeto.
+ - [ ] Estrutura do Back-end.
  - [ ] Continuação...
 
 <br>
@@ -41,8 +41,10 @@
 
 <p>Arquitetura de Camadas MSC</p>
 
-### Estrutura do projeto
+### Estrutura do Backend.
 
 <p> Diagrama do Banco de dados</p>
 
 <img width="400" alt="Diagrama do banco de dados" src="./diagram.png">
+
+<p>Criação dos endpoints em andamento...</p>
