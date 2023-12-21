@@ -31,7 +31,7 @@
 
 <p>Para Front-end: </p>
 
-- React
+- Next
 - Typescript
 - Sass
 
@@ -43,7 +43,6 @@
 
 ### Estrutura do projeto
 
-<p>Para Backend: </p>
+<p> Diagrama do Banco de dados</p>
 
-
-<p>Para Front-end</p>
+<img width="400" alt="Diagrama do banco de dados" src="./diagram.png">
