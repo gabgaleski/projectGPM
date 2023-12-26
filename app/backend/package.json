@@ -1,5 +1,5 @@
 {
-  "name": "backend-project",
+  "name": "backend",
   "version": "1.0.0",
   "description": "Backend ",
   "main": "./src/server.js",
@@ -7,7 +7,7 @@
     "start": "ts-node src/server.ts",
     "dev": "nodemon --watch \"./src/**\" --ext \"ts,js\" --ignore \"src/**/*.spec.ts,src/**/*.json\" --exec \"ts-node src/server.ts\"",
     "build": "npx -y tsc"
-    },
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
@@ -25,6 +25,7 @@
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "eslint": "^8.56.0",
     "nodemon": "^3.0.2",
+    "sequelize-cli": "^6.6.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
