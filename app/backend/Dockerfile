@@ -1,15 +1,16 @@
 FROM node:16.14
 
+RUN mkdir -p /app && chown -R node:node /app
+USER node
+
 WORKDIR /app
 
-COPY package*.json ./
+COPY --chown=node:node package*.json ./
 
 RUN npm install
 
-COPY . .
-
-RUN npm run build
-
-EXPOSE 3001
-
-CMD ["npm", "start"]
+COPY --chown=node:node src src
+COPY --chown=node:node .eslintignore .
+COPY --chown=node:node .eslintrc.json .
+COPY --chown=node:node .sequelizerc .
+COPY --chown=node:node tsconfig.json .
