@@ -5,3 +5,9 @@ export default interface IUser {
     password: string;
     role: string;
 }
+
+export interface ICreateUser {
+    username: string;
+    email: string;
+    password: string;
+}

@@ -8,9 +8,14 @@ export default class UserController {
         this.userService = new UserService();
     }
 
-    public async findAll(req: Request, res: Response) {
+    public async findAll(_req: Request, res: Response) {
         const users = await this.userService.findAll();
         return res.status(200).json(users);
+    }
+
+    public async create(req: Request, res: Response) {
+        const createUser = await this.userService.create(req.body)
+        return res.status(201).json(createUser);
     }
 
 }
