@@ -1,31 +1,34 @@
 import { Model, QueryInterface, DataTypes } from 'sequelize';
-import IUser from '../../interfaces/Iuser.ts/IUser';
+import ICar from '../../interfaces/ICar.ts/ICar';
 
 export default {
   up(queryInterface: QueryInterface) {
-    return queryInterface.createTable<Model<IUser>>('users', {
+    return queryInterface.createTable<Model<ICar>>('cars', {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      username: {
+      name: {
         type: DataTypes.STRING,
       },
-      email: {
+      status: {
+        type: DataTypes.INTEGER,
+      },
+      description: {
         type: DataTypes.STRING,
       },
-      password: {
+      brand: {
         type: DataTypes.STRING,
       },
-      role: {
-        type: DataTypes.STRING,
-      },
+      images: {
+        type: DataTypes.STRING
+      }
     });
   },
   
   down(queryInterface: QueryInterface) {
-    return queryInterface.dropTable('users');
+    return queryInterface.dropTable('cars');
   },
 };
