@@ -49,6 +49,5 @@ import {
     timestamps: false,
     underscored: true,
   });
-
   
   export default CarModel;

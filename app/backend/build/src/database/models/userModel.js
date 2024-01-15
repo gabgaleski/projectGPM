@@ -36,4 +36,9 @@ UserModel.init({
     timestamps: false,
     underscored: true,
 });
+// UserModel.hasMany(
+//   RentalCarModel, { 
+//     foreignKey: 'id' ,
+//     as: 'userId' 
+//   });
 exports.default = UserModel;
