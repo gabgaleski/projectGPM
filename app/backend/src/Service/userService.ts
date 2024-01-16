@@ -1,6 +1,6 @@
 import UserModel from "../database/models/userModel";
-import ICrudUser from "../interfaces/Iuser.ts/ICrudUser";
-import IUser, { ICreateUser } from "../interfaces/Iuser.ts/IUser";
+import ICrudUser from "../interfaces/Iuser/ICrudUser";
+import IUser, { ICreateUser } from "../interfaces/Iuser/IUser";
 import hashPassword from "../auth/bcrypt";
 
 export default class UserService implements ICrudUser {

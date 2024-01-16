@@ -1,5 +1,5 @@
 import { Model, QueryInterface, DataTypes } from 'sequelize';
-import IRentalCar from '../../interfaces/IRental.ts/IRentalCar';
+import IRentalCar from '../../interfaces/IRental/IRentalCar';
 
 export default {
   up(queryInterface: QueryInterface) {
@@ -12,19 +12,23 @@ export default {
       },
       carId: {
         type: DataTypes.INTEGER,
-        field: 'car_id'
+        field: 'car_id',
+        allowNull: false,
       },
       userId: {
         type: DataTypes.INTEGER,
-        field: 'user_id'
+        field: 'user_id',
+        allowNull: false,
       },
       initialDate: {
         type: DataTypes.DATE,
-        field: 'initial_date'
+        field: 'initial_date',
+        allowNull: false,
       },
       finalDate: {
         type: DataTypes.DATE,
-        field: 'final_date'
+        field: 'final_date',
+        allowNull: false,
       },
     });
   },

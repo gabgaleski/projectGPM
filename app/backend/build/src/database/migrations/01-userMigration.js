@@ -12,12 +12,15 @@ exports.default = {
             },
             username: {
                 type: sequelize_1.DataTypes.STRING,
+                allowNull: false,
             },
             email: {
                 type: sequelize_1.DataTypes.STRING,
+                allowNull: false,
             },
             password: {
                 type: sequelize_1.DataTypes.STRING,
+                allowNull: false,
             },
             role: {
                 type: sequelize_1.DataTypes.STRING,

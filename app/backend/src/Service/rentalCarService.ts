@@ -1,6 +1,6 @@
 import RentalCarModel from "../database/models/rentalCarModel";
-import ICrudRentalCar from "../interfaces/IRental.ts/ICrudRental";
-import IRentalCar from "../interfaces/IRental.ts/IRentalCar";
+import ICrudRentalCar from "../interfaces/IRental/ICrudRental";
+import IRentalCar from "../interfaces/IRental/IRentalCar";
 
 export default class RentalCarService implements ICrudRentalCar {
     

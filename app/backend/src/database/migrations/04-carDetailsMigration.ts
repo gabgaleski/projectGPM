@@ -1,37 +1,36 @@
 import { Model, QueryInterface, DataTypes } from 'sequelize';
-import ICar from '../../interfaces/ICar/ICar';
+import ICarDetails from '../../interfaces/ICarDetails/ICarDetails';
 
 export default {
   up(queryInterface: QueryInterface) {
-    return queryInterface.createTable<Model<ICar>>('cars', {
+    return queryInterface.createTable<Model<ICarDetails>>('cars_details', {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      name: {
-        type: DataTypes.STRING,
+      carId: {
+        type: DataTypes.INTEGER,
+        field: 'car_id',
         allowNull: false,
       },
-      status: {
+      year: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      description: {
-        type: DataTypes.STRING,
+      capacity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
-      brand: {
+      gear: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      images: {
-        type: DataTypes.STRING
-      }
     });
   },
   
   down(queryInterface: QueryInterface) {
-    return queryInterface.dropTable('cars');
+    return queryInterface.dropTable('cars_details');
   },
 };

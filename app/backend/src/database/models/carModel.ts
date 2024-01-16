@@ -6,6 +6,7 @@ import {
     CreationOptional,
   } from 'sequelize';
     import db from '.';
+import CarDetailsModel from './carsDetailsModel';
   
   class CarModel extends Model<InferAttributes<CarModel>,
   InferCreationAttributes<CarModel>> {
@@ -48,6 +49,11 @@ import {
     modelName: 'cars',
     timestamps: false,
     underscored: true,
+  });
+
+  CarModel.hasOne(CarDetailsModel, {
+    foreignKey: 'carId',
+    as: 'carDetails',
   });
   
   export default CarModel;
