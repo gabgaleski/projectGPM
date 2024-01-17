@@ -9,9 +9,11 @@ export default class UserService implements ICrudUser {
         return await UserModel.findAll();
     }
 
-    public async create(user: ICreateUser): Promise<IUser> {
+    public async create(user: ICreateUser): Promise<IUser | null> {
         const defaultRole = 'USER';
         const {password, username, email} = user
+        const serchEmail = await UserModel.findOne({where: {email}})
+        if (serchEmail) return null
         const criptoPassword = hashPassword(password)
         const request = {username, email, password: criptoPassword, role: defaultRole};
         const newUser = await UserModel.create(request);

@@ -15,6 +15,9 @@ export default class UserController {
 
     public async create(req: Request, res: Response) {
         const createUser = await this.userService.create(req.body)
+
+        if (!createUser) return res.status(400).json({message: 'Email already registered'})
+
         return res.status(201).json(createUser);
     }
 
