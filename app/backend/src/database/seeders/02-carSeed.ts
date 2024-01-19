@@ -9,6 +9,7 @@ export default {
         description: 'Carro ideal para a familia',
         brand: 'Teste',
         images: '',
+        value: 95
       },
     ], {});
   },

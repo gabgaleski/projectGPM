@@ -1,7 +1,9 @@
 import UserModel from "../database/models/userModel";
 import ICrudUser from "../interfaces/Iuser/ICrudUser";
-import IUser, { ICreateUser } from "../interfaces/Iuser/IUser";
+import IUser, { ICreateUser, IUserLogin } from "../interfaces/Iuser/IUser";
 import hashPassword from "../auth/bcrypt";
+import { compareSync } from "bcryptjs";
+import JWT from "../auth/JTW";
 
 export default class UserService implements ICrudUser {
 
@@ -19,6 +21,20 @@ export default class UserService implements ICrudUser {
         const newUser = await UserModel.create(request);
 
         return newUser;
+    }
+
+    public async login(user: IUserLogin ): Promise<{message: string}> {
+        const { email, password } = user
+        const getUser = await UserModel.findOne({where: {email}})
+
+        if (!getUser) return { message: 'ERROR' }
+        if (!password || !compareSync(password, getUser.password)) {
+            return { message: 'UNAUTHORIZED' }
+        }
+        const token = JWT.sign(user);
+
+        return { message: token }
+
     }
 
 }

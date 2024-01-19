@@ -25,6 +25,10 @@ export default {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      value: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       images: {
         type: DataTypes.STRING
       }

@@ -15,6 +15,7 @@ import CarDetailsModel from './carsDetailsModel';
     declare status: number;
     declare description: string;
     declare brand: string;
+    declare value: number;
     declare images: string;
   }
   
@@ -35,6 +36,10 @@ import CarDetailsModel from './carsDetailsModel';
     },
     description: {
         type: DataTypes.STRING,
+        allowNull: false
+    },
+    value: {
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     brand: {
