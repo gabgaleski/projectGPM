@@ -10,10 +10,10 @@ export default class JWT {
       };
 
     public static sign(payload: JwtPayload): string {
-        return sign(payload, JWT.secret, JWT.jwtConfig) // TESTANDO THIS
+        return sign(payload, JWT.secret, JWT.jwtConfig);
     }
 
-    public verify(token: string): JwtPayload | string {
+    public static verify(token: string): JwtPayload | string {
         try {
             return verify(token, JWT.secret)
         } catch (error) {

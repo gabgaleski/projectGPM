@@ -5,7 +5,7 @@ export default {
     await queryInterface.bulkInsert('cars', [
       {
         name: 'Kwid',
-        status: 0,
+        status: 1,
         description: 'Carro ideal para a familia',
         brand: 'Teste',
         images: '',

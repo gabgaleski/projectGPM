@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import JWT from "../auth/JTW";
 
 const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
@@ -31,6 +32,31 @@ export default class ValidateUser {
         }
 
         next()
+    }
+
+    static extractBarear = (token: string): string => (
+        token.includes(' ') ? token.split(' ')[1] : token
+    );
+
+    static validateToken(req: Request, res: Response, next: NextFunction): Response | void {
+        const { authorization } = req.headers;
+
+        if (!authorization) {
+            return res.status(401).json({message: "UNAUTHORIZED"});
+        }
+
+        const formatedToken = ValidateUser.extractBarear(authorization);
+
+        const tokenValidate = JWT.verify(formatedToken);
+
+        if (tokenValidate === 'Token must be a valid token') {
+            return res.status(401).json({ message: tokenValidate })
+        }
+
+        req.body.token = tokenValidate;
+
+        next()
+
     }
 
 }

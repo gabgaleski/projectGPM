@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import UserService from '../Service/userService';
+import hashPassword from '../auth/bcrypt';
 
 export default class UserController {
     private userService: UserService;
@@ -33,6 +34,23 @@ export default class UserController {
         }
 
         return res.status(201).json({token: message});
+    }
+
+    public async update(req: Request, res: Response): Promise<Response | void> {
+        const { username, email, password } = req.body;
+        const { id } = req.body.token;
+        let infosUser = {username, email, password};
+        if (password) {
+            infosUser = {username, email, password: hashPassword(password)}
+        }
+        const changeUser = await this.userService.update(infosUser, id);
+
+        if (changeUser.message === "ERROR") {
+            return res.status(500).json({message: "Error update"})
+        }
+
+        return res.status(200).json(changeUser);
+
     }
 
 }

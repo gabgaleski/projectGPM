@@ -31,9 +31,22 @@ export default class UserService implements ICrudUser {
         if (!password || !compareSync(password, getUser.password)) {
             return { message: 'UNAUTHORIZED' }
         }
-        const token = JWT.sign(user);
+        const token = JWT.sign(getUser.dataValues);
 
         return { message: token }
+    }
+
+    public async update(info: ICreateUser, idUser: string): Promise<{message: string}> {
+        const { email } = info;
+        const validateEmail = await UserModel.findOne({where: { email }})
+
+        if(validateEmail && Number(idUser) !== validateEmail.id) return { message: "ERROR" };
+
+        const [changeUser] = await UserModel.update(info, {where: { id: idUser }});
+
+        if (changeUser !== 1) return { message: "ERROR" };
+
+        return {message: "SUCCESS"}
 
     }
 
