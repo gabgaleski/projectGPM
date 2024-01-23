@@ -11,8 +11,13 @@ router.get('/',
 router.put('/',
 ValidateUser.validateToken,
 (req: Request, res: Response) => userController.update(req, res));
+
 router.post('/',
 ValidateUser.createUser,
 (req: Request, res: Response) => userController.create(req, res));
+
+router.delete('/',
+ValidateUser.validateToken,
+(req: Request, res: Response) => userController.delete(req, res))
 
 export default router;

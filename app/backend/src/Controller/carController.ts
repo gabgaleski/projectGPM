@@ -9,8 +9,8 @@ export default class CarController {
     }
 
     public async findAll(req: Request, res: Response): Promise<Response> {
-        const getCar = await this.carService.findAll();
-        return res.status(200).json(getCar);
+        const getCars = await this.carService.findAll();
+        return res.status(200).json(getCars);
     }
 
 }

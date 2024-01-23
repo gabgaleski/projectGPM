@@ -36,7 +36,7 @@ export default class UserController {
         return res.status(201).json({token: message});
     }
 
-    public async update(req: Request, res: Response): Promise<Response | void> {
+    public async update(req: Request, res: Response): Promise<Response> {
         const { username, email, password } = req.body;
         const { id } = req.body.token;
         let infosUser = {username, email, password};
@@ -50,7 +50,17 @@ export default class UserController {
         }
 
         return res.status(200).json(changeUser);
+    }
 
+    public async delete(req: Request, res: Response): Promise<Response> {
+        const { id } = req.body.token;
+        const deleteAccount = await this.userService.delete(Number(id));
+
+        if (deleteAccount.data === "ERROR") {
+            return res.status(400).json({message: "Error"})
+        }
+
+        return res.status(200).json({message: "SUCCESS"});
     }
 
 }

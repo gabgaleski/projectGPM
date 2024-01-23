@@ -47,7 +47,14 @@ export default class UserService implements ICrudUser {
         if (changeUser !== 1) return { message: "ERROR" };
 
         return {message: "SUCCESS"}
+    }
 
+    public async delete(id: number): Promise<{data: number | string}> {
+        const deleteAccount = await UserModel.destroy({where: { id }})
+        const maxNumberAccount = 1
+        if (deleteAccount !== maxNumberAccount) return { data: "ERROR" }
+
+        return {data: deleteAccount}
     }
 
 }
