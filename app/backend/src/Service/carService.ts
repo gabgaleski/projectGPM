@@ -17,4 +17,14 @@ export default class CarService implements ICrudCar {
         });
         return getCar
     }
+
+    public async update(id: string, infos: ICar): Promise<{message: string}> {
+        const getCar = await CarModel.findOne({where: { id }})
+        if(!getCar) return {message: "Car not found"}
+
+        const [updateCar] = await CarModel.update(infos, {where: { id }})
+        if(updateCar !== 1) return { message: "ERROR" }
+
+        return { message: "SUCCESS" };
+    }
 }
