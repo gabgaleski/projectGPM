@@ -32,6 +32,7 @@ import CarDetailsModel from './carsDetailsModel';
     },
     status: {
         type: DataTypes.INTEGER,
+        defaultValue: 0,
         allowNull: false
     },
     description: {
@@ -48,6 +49,7 @@ import CarDetailsModel from './carsDetailsModel';
     },
     images: {
         type: DataTypes.STRING,
+        defaultValue: 'https://cdn-icons-png.flaticon.com/512/4989/4989564.png'
     }
   }, {
     sequelize: db,

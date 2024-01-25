@@ -1,6 +1,6 @@
 import CarModel from "../database/models/carModel";
 import CarDetailsModel from "../database/models/carsDetailsModel";
-import ICar from "../interfaces/ICar/ICar";
+import ICar, { IDetailsCar } from "../interfaces/ICar/ICar";
 import ICrudCar from "../interfaces/ICar/ICrudCar";
 
 export default class CarService implements ICrudCar {
@@ -26,5 +26,15 @@ export default class CarService implements ICrudCar {
         if(updateCar !== 1) return { message: "ERROR" }
 
         return { message: "SUCCESS" };
+    }
+
+    public async create(car: IDetailsCar): Promise<{message: string}> {
+        const { carDetails } = car;
+        const { year, capacity, gear } = carDetails;
+        const createCar = await CarModel.create(car);
+        const details = {year, capacity, gear, carId: createCar.id}
+         await CarDetailsModel.create(details);
+
+        return {message: "SUCCESS"};
     }
 }

@@ -14,10 +14,23 @@ export default class CarController {
     }
 
     public async update(req: Request, res: Response): Promise<Response> {
-        const { id } = req.params;
-        const updateCar = await this.carService.update(id, req.body);
+        try {
+            const { id } = req.params;
+            const updateCar = await this.carService.update(id, req.body);
+    
+            return res.status(200).json(updateCar);
+        } catch (error) {
+            return res.status(500).json(error)
+        }
+    }
 
-        return res.status(200).json(updateCar);
+    public async create(req: Request, res: Response): Promise<Response> {
+        try {
+            const createCar = await this.carService.create(req.body);
+            return res.status(201).json(createCar);
+        } catch (error) {
+            return res.status(400).json(error)
+        }
     }
 
 }

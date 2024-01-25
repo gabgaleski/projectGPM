@@ -16,6 +16,7 @@ export default {
       },
       status: {
         type: DataTypes.INTEGER,
+        defaultValue: 0,
         allowNull: false,
       },
       description: {
@@ -30,7 +31,8 @@ export default {
         allowNull: false,
       },
       images: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        defaultValue: 'https://cdn-icons-png.flaticon.com/512/4989/4989564.png',
       }
     });
   },

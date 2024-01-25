@@ -59,4 +59,17 @@ export default class ValidateUser {
 
     }
 
+    static adminUser(req: Request, res: Response, next: NextFunction): Response | void {
+        try {
+            const { role } = req.body.token;
+            if (role !== "ADMIN") {
+                return res.status(401).json({message:"Only ADMIN"});
+            }
+
+            next()
+        } catch (error) {
+            return res.status(400).json({error});
+        }
+    }
+
 }

@@ -1,3 +1,5 @@
+import ICarDetails from "../ICarDetails/ICarDetails";
+
 export default interface ICar {
     id: number;
     name: string;
@@ -6,4 +8,8 @@ export default interface ICar {
     brand: string;
     images: string;
     value: number;
+}
+
+export interface IDetailsCar extends ICar {
+    carDetails: ICarDetails;
 }
