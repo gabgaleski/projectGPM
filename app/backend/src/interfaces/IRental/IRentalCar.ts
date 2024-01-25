@@ -5,3 +5,8 @@ export default interface IRentalCar {
     initialDate: Date;
     finalDate: Date;
 }
+
+export interface ICreateRentalCar {
+    initialDate: Date;
+    finalDate: Date;
+}
