@@ -10,16 +10,23 @@ export default class UserController {
     }
 
     public async findAll(_req: Request, res: Response): Promise<Response> {
-        const users = await this.userService.findAll();
-        return res.status(200).json(users);
+        try {
+            const users = await this.userService.findAll();
+            return res.status(200).json(users);
+        } catch (error) {
+            return res.status(500).json({message: "ERROR"});
+        }
     }
 
     public async create(req: Request, res: Response): Promise<Response> {
-        const createUser = await this.userService.create(req.body)
+        try {
+            const createUser = await this.userService.create(req.body)
+            if (!createUser) return res.status(400).json({message: 'Email already registered'})
 
-        if (!createUser) return res.status(400).json({message: 'Email already registered'})
-
-        return res.status(201).json(createUser);
+            return res.status(201).json({message: "User Created"});
+        } catch (error) {
+            return res.status(500).json({message: "ERROR"})
+        }
     }
 
     public async login(req: Request, res: Response): Promise<Response> {
@@ -31,7 +38,7 @@ export default class UserController {
             }
     
             if (message === 'UNAUTHORIZED') {
-                return res.status(401).json({message: 'Invalid password'})
+                return res.status(401).json({message: 'Invalid email or password'})
             }
     
             return res.status(201).json({token: message});

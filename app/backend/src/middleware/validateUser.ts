@@ -6,7 +6,7 @@ const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 export default class ValidateUser {
 
-    static createUser(req: Request, res: Response,next: NextFunction): Response | void {
+    static createUser(req: Request, res: Response, next: NextFunction): Response | void {
         const { username, email, password } = req.body;
         const minPassword = 6;
 

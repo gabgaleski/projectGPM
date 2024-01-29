@@ -15,15 +15,19 @@ export default class RentalCarController {
     }
 
     public async create(req: Request, res: Response): Promise<Response> {
-        const { carId } = req.params;
-        const { id } = req.body.token;
-        const create = await this.rentalCarService.create(carId, id, req.body);
-
-        if (create.message !== "SUCCESS") {
-            return res.status(400).json(create);
+        try {
+            const { carId } = req.params;
+            const { id } = req.body.token;
+            const create = await this.rentalCarService.create(carId, id, req.body);
+    
+            if (create.message !== "SUCCESS") {
+                return res.status(400).json(create);
+            }
+    
+            return res.status(201).json(create);
+        } catch (error) {
+            return res.status(500).json({message: "ERROR"})
         }
-
-        return res.status(201).json(create);
     }
 
 }
