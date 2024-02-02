@@ -9,6 +9,12 @@ export default {
         capacity: 4,
         gear: 'Automatico',
       },
+      {
+        car_id: 2,
+        year: 2019,
+        capacity: 5,
+        gear: 'Automatico',
+      },
     ], {});
   },
 

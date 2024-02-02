@@ -20,6 +20,17 @@ services:
     depends_on:
       - db
 
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports:
+      - 8080:8080
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
+    restart: always
+
   db:
     image: postgres:13
     container_name: db
