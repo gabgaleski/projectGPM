@@ -7,7 +7,7 @@ export default {
         name: 'Kwid',
         status: 0,
         description: 'Carro ideal para a familia',
-        brand: 'Teste',
+        brand: 'Renault',
         images: '',
         value: 95
       },
