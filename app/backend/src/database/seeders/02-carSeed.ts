@@ -5,11 +5,19 @@ export default {
     await queryInterface.bulkInsert('cars', [
       {
         name: 'Kwid',
-        status: 1,
+        status: 0,
         description: 'Carro ideal para a familia',
         brand: 'Teste',
         images: '',
         value: 95
+      },
+      {
+        name: 'HB20',
+        status: 1,
+        description: 'Carro',
+        brand: 'Teste',
+        images: '',
+        value: 120
       },
     ], {});
   },
