@@ -4,20 +4,20 @@ export default {
   up: async (queryInterface: QueryInterface) => {
     await queryInterface.bulkInsert('cars', [
       {
-        name: 'Kwid',
+        name: 'Fiat Mobi 1.0, Renault Kwid',
         status: 0,
         description: 'Carro ideal para a familia',
         brand: 'Renault',
         images: '',
-        value: 95
+        value: 58
       },
       {
-        name: 'HB20',
+        name: 'Fiat Argo 1.0, Hyundai HB20',
         status: 1,
         description: 'Carro',
         brand: 'Teste',
         images: '',
-        value: 120
+        value: 69
       },
     ], {});
   },
