@@ -8,6 +8,5 @@ export default defineConfig({
     port: 8080,
     strictPort: true,
     host: true,
-    origin: 'hhtp://localhost:8080',
   },
 })
