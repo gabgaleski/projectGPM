@@ -16,11 +16,16 @@ export async function requestData(endpoint: string) {
 }
 
 export async function requestPost<T>(endpoint: string, body: T) {
-  const data = api.post(endpoint, body)
+  const data = await api.post(endpoint, body)
   return data
 }
 
 export async function requestPut<T>(endpoint: string, body: T) {
   const data = api.put(endpoint, body)
+  return data
+}
+
+export async function requestDelete(endpoint: string) {
+  const data = api.delete(endpoint)
   return data
 }

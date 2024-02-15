@@ -1,12 +1,17 @@
-import logo from '../assets/logo1.png';
 
 function Header() {
 
   return ( 
-    <header>
-      <img src={ logo } width={150} />
-      <p>AluCar</p>
-      <span>O lugar certo para alugar carros</span>
+    <header className="header">
+      <h1>AluCar</h1>
+      <nav>
+        <ul>
+          <li>Carros Disponiveis</li>
+          <li>Sobre a Alucar</li>
+          <li>Minhas Reservas</li>
+          <li>Login</li>
+        </ul>
+      </nav>
     </header>
   );
 }

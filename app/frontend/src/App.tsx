@@ -6,6 +6,7 @@ import Profile from './Pages/Profile';
 import Cars from './Pages/Cars';
 import CarInfos from './Pages/CarInfos';
 import Register from './Pages/Register';
+import './App.scss';
 
 function App() {
 
