@@ -1,15 +1,27 @@
+import '../styles/header.scss';
+import { FaCarSide } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 function Header() {
 
   return ( 
     <header className="header">
-      <h1>AluCar</h1>
-      <nav>
-        <ul>
-          <li>Carros Disponiveis</li>
-          <li>Sobre a Alucar</li>
-          <li>Minhas Reservas</li>
-          <li>Login</li>
+      <div className='logo'>
+        <FaCarSide size={50} color='#5BC3EB' />
+        <h1>
+          <Link className='title-logo' to="/">
+            Alu<span className='span-car'>car</span>
+          </Link>
+        </h1>
+      </div>
+      <nav className='nav-header'>
+        <ul className='nav-car'>
+          <Link to="/cars" className='nav-link'>Carros Disponiveis</Link>
+          <Link to="/about" className='nav-link'>Sobre a Alucar</Link>
+        </ul>
+        <ul className='nav-person'>
+          <Link to="/profile" className='nav-link'>Minhas Reservas</Link>
+          <Link to="/register" className='nav-link'>Login</Link>
         </ul>
       </nav>
     </header>
