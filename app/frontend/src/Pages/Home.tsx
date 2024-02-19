@@ -6,7 +6,13 @@ function Home() {
     <>
       <Header />
       <SearchBar />
-      <h1>Home</h1>
+      <section>
+        <p>Informaçoes sobre a Alucar</p>
+        <p>Carrousel de imagens dos 3 primeiros carros</p>
+        <p>Informações sobre a retirada dos carros e formas de pagamento</p>
+        <p>Onde atua</p>
+        <p>Footer com infos</p>
+      </section>
     </>
   );
 }

@@ -1,17 +1,12 @@
 import { createContext, useState, useMemo } from "react";
-import { ReactPropsType } from "../Types/provierTypes";
+import { ReactPropsType, ContextType } from "../Types/provierTypes";
 
 const initialValue = {
   user: '',
   setUser: () => {},
 }
 
-type UserContextType = {
-  user: string;
-  setUser: (newState: string) => void;
-}
-
-export const CreateContext = createContext<UserContextType>(initialValue);
+export const CreateContext = createContext<ContextType>(initialValue);
 
 function ContextProvider({ children }: ReactPropsType) {
   const [user, setUser] = useState(initialValue.user);
