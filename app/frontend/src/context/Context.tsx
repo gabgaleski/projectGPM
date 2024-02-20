@@ -1,28 +1,35 @@
 import { createContext, useState, useMemo } from "react";
-import { ReactPropsType, ContextType } from "../Types/provierTypes";
+import { ReactPropsType, ContextType, CarType } from "../Types/provierTypes";
 
 const initialValue = {
-  user: '',
-  setUser: () => {},
+  searchCar: '',
+  setSearchCar: () => {},
+  carList: [] as CarType[],
+  setCarList: () => {},
 }
 
-export const CreateContext = createContext<ContextType>(initialValue);
+export const InfosContext = createContext<ContextType>(initialValue);
 
 function ContextProvider({ children }: ReactPropsType) {
-  const [user, setUser] = useState(initialValue.user);
+  const [searchCar, setSearchCar] = useState(initialValue.searchCar);
+  const [carList, setCarList] = useState(initialValue.carList)
 
   const values = useMemo(() => ({
-    user,
-    setUser,
+    searchCar,
+    setSearchCar,
+    carList,
+    setCarList,
   }), [
-    user,
-    setUser,
+    searchCar,
+    setSearchCar,
+    carList,
+    setCarList,
   ])
 
   return ( 
-    <CreateContext.Provider value={values}>
+    <InfosContext.Provider value={values}>
       {children}
-    </CreateContext.Provider>
+    </InfosContext.Provider>
    );
 }
 

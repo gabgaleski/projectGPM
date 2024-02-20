@@ -4,7 +4,27 @@ export type ReactPropsType = {
   children: ReactNode
 }
 
+type CarDetails = {
+  year: number;
+  capacity: number;
+  gear: string;
+}
+
+export type CarType = {
+  id: number;
+  name: string;
+  status: number;
+  description: string;
+  brand: string;
+  images: string;
+  value: number;
+  carDetails: CarDetails
+}
+
+
 export type ContextType = {
-  user: string;
-  setUser: (newState: string) => void;
+  searchCar: string;
+  setSearchCar: (newState: string) => void;
+  carList: CarType[]
+  setCarList: (newState: CarType[]) => void;
 }
