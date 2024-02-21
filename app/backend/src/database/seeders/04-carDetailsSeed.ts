@@ -15,6 +15,18 @@ export default {
         capacity: 5,
         gear: 'Automatico',
       },
+      {
+        car_id: 3,
+        year: 2016,
+        capacity: 4,
+        gear: 'Manual',
+      },
+      {
+        car_id: 4,
+        year: 2020,
+        capacity: 5,
+        gear: 'Manual',
+      },
     ], {});
   },
 

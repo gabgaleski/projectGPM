@@ -1,13 +1,16 @@
 import { useContext } from "react";
 import { InfosContext } from "../context/Context";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function SearchBar() {
   const { searchCar, setSearchCar } = useContext(InfosContext)
   const navigate = useNavigate();
+  const location = useLocation();
 
   const onClickButton = (): void => {
-    navigate('/cars')
+    if (location.pathname === '/') {
+      navigate('/cars')
+    }
   }
 
   return ( 
@@ -20,6 +23,7 @@ function SearchBar() {
       placeholder="Digite o nome do carro"
       />
       <button
+      type="button"
       onClick={onClickButton}
       disabled={searchCar.length <= 0}
       >Pesquisar</button>

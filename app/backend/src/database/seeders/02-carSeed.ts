@@ -4,20 +4,36 @@ export default {
   up: async (queryInterface: QueryInterface) => {
     await queryInterface.bulkInsert('cars', [
       {
-        name: 'Fiat Mobi 1.0, Renault Kwid',
+        name: 'Renault Kwid',
         status: 0,
         description: 'Carro ideal para a familia',
         brand: 'Renault',
         images: '',
-        value: 58
+        value: 58.99
       },
       {
-        name: 'Fiat Argo 1.0, Hyundai HB20',
+        name: 'Fiat Mobi 1.0',
+        status: 1,
+        description: 'Carro ideal para a familia',
+        brand: 'Fiat',
+        images: '',
+        value: 63.25
+      },
+      {
+        name: 'Fiat Argo 1.0',
         status: 1,
         description: 'Carro',
-        brand: 'Teste',
+        brand: 'Fiat',
         images: '',
-        value: 69
+        value: 69.86
+      },
+      {
+        name: 'Hyundai HB20',
+        status: 1,
+        description: 'Carro',
+        brand: 'Hyundai',
+        images: '',
+        value: 86.55
       },
     ], {});
   },

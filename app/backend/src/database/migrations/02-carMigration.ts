@@ -27,7 +27,7 @@ export default {
         allowNull: false,
       },
       value: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DOUBLE,
         allowNull: false,
       },
       images: {
