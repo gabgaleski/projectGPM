@@ -10,7 +10,7 @@ function Home() {
   const { carList, setCarList } = useContext(InfosContext);
 
   const requestCars = useCallback(async() => {
-    const {data} = await requestData('/cars');
+    const { data } = await requestData('/cars');
     setCarList(data)
   }, [setCarList])
 

@@ -27,4 +27,6 @@ export type ContextType = {
   setSearchCar: (newState: string) => void;
   carList: CarType[]
   setCarList: (newState: CarType[]) => void;
+  filtredCars: CarType[];
+  setFiltredCars: (newState: CarType[]) => void;
 }

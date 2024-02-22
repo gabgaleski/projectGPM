@@ -6,24 +6,31 @@ const initialValue = {
   setSearchCar: () => {},
   carList: [] as CarType[],
   setCarList: () => {},
+  filtredCars: [] as CarType[],
+  setFiltredCars: () => {},
 }
 
 export const InfosContext = createContext<ContextType>(initialValue);
 
 function ContextProvider({ children }: ReactPropsType) {
   const [searchCar, setSearchCar] = useState(initialValue.searchCar);
-  const [carList, setCarList] = useState(initialValue.carList)
+  const [carList, setCarList] = useState(initialValue.carList);
+  const [filtredCars, setFiltredCars] = useState(initialValue.filtredCars);
 
   const values = useMemo(() => ({
     searchCar,
     setSearchCar,
     carList,
     setCarList,
+    filtredCars,
+    setFiltredCars
   }), [
     searchCar,
     setSearchCar,
     carList,
     setCarList,
+    filtredCars,
+    setFiltredCars
   ])
 
   return ( 

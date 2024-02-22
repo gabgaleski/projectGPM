@@ -6,10 +6,10 @@ import CardCar from "../components/CardCar";
 import { requestData } from "../services/requests";
 
 function Cars() {
-    const { carList, setCarList, searchCar } = useContext(InfosContext)
+    const { carList, setCarList, filtredCars, setFiltredCars } = useContext(InfosContext)
 
     const requestCars = useCallback(async() => {
-        const {data} = await requestData('/cars');
+        const { data } = await requestData('/cars');
         setCarList(data)
       }, [setCarList])
 
@@ -17,7 +17,10 @@ function Cars() {
         if (carList.length <= 0) {
             requestCars()
         }
-    }, [requestCars, carList, searchCar, setCarList])
+        if (filtredCars.length === 0) {
+          setFiltredCars(carList)
+        } // Corrigir reset de filtros
+    }, [requestCars, carList, setCarList, setFiltredCars, filtredCars])
 
     return ( 
       <section>
@@ -32,7 +35,7 @@ function Cars() {
         <div>
           <h3>Carros Disponiveis</h3>
           { 
-            carList.filter((car) => car.status === 1).map((car) => CardCar(car))
+            filtredCars.filter((car) => car.status === 1).map((car) => CardCar(car))
           }
         </div>
       </section>
