@@ -18,11 +18,6 @@ function SearchBar() {
     }
   }
 
-  const resetFilterButton = (): void => {
-    setSearchCar('')
-    setFiltredCars(carList)
-  }
-
   return ( 
     <form>
       <input
@@ -39,10 +34,6 @@ function SearchBar() {
       >
         Pesquisar
       </button>
-      <button
-      type="button"
-      onClick={resetFilterButton}
-      >Limpar Filtros</button>
     </form>
   );
 }
