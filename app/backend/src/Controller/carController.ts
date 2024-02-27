@@ -33,4 +33,14 @@ export default class CarController {
         }
     }
 
+    public async findOne(req: Request, res: Response): Promise<Response> {
+        try {
+            const { id } = req.params
+            const getCar = await this.carService.findOne(Number(id));
+            return res.status(200).json(getCar);
+        } catch (error) {
+            return res.status(400).json(error);
+        }
+    }
+
 }

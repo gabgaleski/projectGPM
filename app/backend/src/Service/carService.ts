@@ -37,4 +37,18 @@ export default class CarService implements ICrudCar {
 
         return {message: "SUCCESS"};
     }
+
+    public async findOne(id: number): Promise<ICar | null> {
+        const getCar = await CarModel.findOne({where: { id }, include: [{
+            model: CarDetailsModel,
+            as: 'carDetails',
+            attributes: ['year', 'capacity', 'gear'],
+        }]});
+
+        if(!getCar) {
+            return null
+        }
+
+        return getCar
+    }
 }

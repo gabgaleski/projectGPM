@@ -7,6 +7,7 @@ const router = Router();
 const carController = new CarController();
 
 router.get('/', (req: Request, res: Response) => carController.findAll(req, res));
+router.get('/:id', (req: Request, res: Response) => carController.findOne(req, res))
 
 router.put('/:id',
 ValidateUser.validateToken,

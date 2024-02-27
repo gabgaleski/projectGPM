@@ -9,8 +9,7 @@ import fiat from '../assets/fiat.png'
 import React from "react";
 
 function Cars() {
-    const [sortList, setSortList] = useState("")
-    const [brandFilter, setBrandFilter] = useState("");
+    const [sortList, setSortList] = useState<string>("")
     const { 
     carList,
     setCarList,
@@ -40,14 +39,13 @@ function Cars() {
         setFiltredCars(filtredCars.sort((a, b) => b.value - a.value))
         return setSortList('maior')
       }
-
     }
 
-    const handleBrandFilter = (e: React.MouseEvent<HTMLButtonElement> ): void => {
-      const { value } = e.currentTarget // CONTINUAR IMPLEMENTANDO FUNÇÃO PARA FILTRAR POR MARCA
-      console.log(value)
+    const handleBrandFilter = (brand: string ): void => {
+        setFiltredCars(carList.filter((car) => car.brand === brand))
+        setSortList('')
+        setSearchCar('')
     }
-      
 
     useEffect(() => {
         if (carList.length <= 0) {
@@ -56,6 +54,7 @@ function Cars() {
         if (filtredCars.length === 0) {
           setFiltredCars(carList)
         }
+
     }, [requestCars, carList, setCarList, setFiltredCars, filtredCars])
 
     return ( 
@@ -64,15 +63,15 @@ function Cars() {
         <div>
           <SearchBar />
           <div>
-            <select onChange={ (e) => ordenateCars(e) } name="ordenate" value={sortList}>
+            <select onChange={ (e) => ordenateCars(e) } name="ordenate" value={ sortList }>
               <option value="">--</option>
               <option value="menor">Menor Preço</option>
               <option value="maior">Maior Preço</option>
             </select>
-            <button type="button" value="hyundai" onClick={(e) => handleBrandFilter(e)}>
+            <button type="button" onClick={ () => handleBrandFilter("Hyundai") }>
               <img src={ hyndai } alt="Hyundai Logo" style={{width: "100px"}} />
             </button>
-            <button type="button" value="fiat" onClick={(e) => handleBrandFilter(e)}>
+            <button type="button" onClick={ () => handleBrandFilter("Fiat") }>
               <img src={ fiat } alt="Fiat Logo" style={{width: "100px"}} />
             </button>
             <button
