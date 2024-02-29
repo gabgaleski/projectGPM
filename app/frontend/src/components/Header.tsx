@@ -21,7 +21,7 @@ function Header() {
         </ul>
         <ul className='nav-person'>
           <Link to="/profile" className='nav-link'>Minhas Reservas</Link>
-          <Link to="/register" className='nav-link'>Login</Link>
+          <Link to="/login" className='nav-link'>Login</Link>
         </ul>
       </nav>
     </header>

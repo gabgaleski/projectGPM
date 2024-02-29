@@ -7,6 +7,7 @@ import Cars from './Pages/Cars';
 import CarInfos from './Pages/CarInfos';
 import Register from './Pages/Register';
 import './App.scss';
+import Login from './Pages/Login';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='cars' element={<Cars />} />
         <Route path='cars/:id' element={<CarInfos />} />
         <Route path='register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </main>

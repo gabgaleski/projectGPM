@@ -3,12 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { requestData } from "../services/requests";
 import { CarType } from "../Types/provierTypes";
 import ReactModal from 'react-modal';
+import Header from "../components/Header";
 
 function CarInfos() {
     const { id } = useParams();
     const navigate = useNavigate()
     const [carInfo, setCarInfo] = useState<CarType>({} as CarType)
-    const [openModal, setOpenModal] = useState<boolean>(true);
+    const [openModal, setOpenModal] = useState<boolean>(false);
 
     const requestInfosCar = useCallback(async () => {
         const { data } = await requestData(`/cars/${id}`)
@@ -28,6 +29,7 @@ function CarInfos() {
   }
   return ( 
     <section>
+      <Header />
       <div>
         <h1>{carInfo.name}</h1>
         <p>{carInfo.brand}</p>
@@ -51,13 +53,11 @@ function CarInfos() {
             right: 'auto',
             bottom: 'auto',
             transform: 'translate(-50%, -50%)',
-        }, overlay: {
-          opacity: "0.9",
         }
       }}
       >
-        <p>Infos do carro</p>
-        <p>Imagem do carro</p>
+        <p>Voce esta alugando um: <strong>{carInfo.name}</strong></p>
+        <img src={carInfo.images} alt="Imagem do carro" />
         <p>Valor por dia e quantidade de dias</p>
         <p>Falando sobre a forma de alguel e garantias</p>
         <p>Informaçoes para o aluguel em um forms</p>
