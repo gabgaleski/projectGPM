@@ -21,8 +21,10 @@ export default class UserController {
     public async create(req: Request, res: Response): Promise<Response> {
         try {
             const createUser = await this.userService.create(req.body)
-            if (!createUser) return res.status(400).json({message: 'Email already registered'})
-
+            if (!createUser) {
+                return res.status(409).json({message: 'Email already registered'})
+            }
+            
             return res.status(201).json({message: "User Created"});
         } catch (error) {
             return res.status(500).json({message: "ERROR"})
