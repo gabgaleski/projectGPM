@@ -3,6 +3,7 @@ import { requestPost, setToken } from "../services/requests";
 import { useState } from "react";
 import { LoginType } from "../Types/loginType";
 import React from "react";
+import { AxiosError } from "axios";
 
 const initialValue: LoginType = {
   email: '',
@@ -26,9 +27,15 @@ function Login() {
       const { data } = await requestPost<LoginType>('/login', loginInfo);
       setToken(data.token)
       localStorage.setItem('token', data.token)
-      return navigate('/')
+      alert("Entrou")
+      return navigate('/profile')
     } catch (error) {
-      return console.log(error)
+      const errorResponse = error as AxiosError;
+      if (errorResponse.response?.status === 401) {
+        return alert("Senha Incorreta")
+      }
+
+      return alert("Preencha os campos corretamente")
     }
   }
 

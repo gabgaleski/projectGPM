@@ -21,6 +21,12 @@ export type CarType = {
   carDetails: CarDetails
 }
 
+export type userProfile = {
+  email: string;
+  role: string;
+  username: string;
+}
+
 
 export type ContextType = {
   searchCar: string;
@@ -29,4 +35,6 @@ export type ContextType = {
   setCarList: (newState: CarType[]) => void;
   filtredCars: CarType[];
   setFiltredCars: (newState: CarType[]) => void;
+  userInfo: userProfile;
+  setUserInfo: (newState: userProfile) => void;
 }

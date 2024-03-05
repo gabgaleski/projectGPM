@@ -6,7 +6,8 @@ const router = Router();
 const userController = new UserController();
 
 router.get('/',
-(req: Request, res: Response) => userController.findAll(req, res));
+ValidateUser.validateToken,
+(req: Request, res: Response) => userController.findOne(req, res));
 
 router.put('/',
 ValidateUser.validateToken,

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CarType } from "../Types/provierTypes";
+import { CarType } from "../Types/providerTypes";
 
 function CardCar(car: CarType) {
   const navegateToCar = `/cars/${car.id}`;

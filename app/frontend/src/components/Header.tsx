@@ -3,7 +3,7 @@ import { FaCarSide } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 
 function Header() {
-
+        //Implementar mudança de quando estiver logado ou nao
   return ( 
     <header className="header">
       <div className='logo'>

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { requestData } from "../services/requests";
-import { CarType } from "../Types/provierTypes";
+import { CarType } from "../Types/providerTypes";
 import ReactModal from 'react-modal';
 import Header from "../components/Header";
 
@@ -46,6 +46,7 @@ function CarInfos() {
         onRequestClose={() => setOpenModal(false)}
         shouldCloseOnOverlayClick={true}
         shouldCloseOnEsc={true}
+        ariaHideApp={false}
         style={{
           content: {
             top: '50%',

@@ -9,9 +9,11 @@ export default class UserController {
         this.userService = new UserService();
     }
 
-    public async findAll(_req: Request, res: Response): Promise<Response> {
+    public async findOne(req: Request, res: Response): Promise<Response> {
         try {
-            const users = await this.userService.findAll();
+            const { id } = req.body.token;
+            const users = await this.userService.findOne(Number(id));
+            if (!users) return res.status(404).json({message: "User not found"})
             return res.status(200).json(users);
         } catch (error) {
             return res.status(500).json({message: "ERROR"});

@@ -7,8 +7,9 @@ import JWT from "../auth/JTW";
 
 export default class UserService implements ICrudUser {
 
-    public async findAll(): Promise<IUser[]> {
-        return await UserModel.findAll();
+    public async findOne(id: number): Promise<IUser | null> {
+        const user = await UserModel.findOne({ where: { id }, attributes: { exclude: ['password'] }});
+        return user
     }
 
     public async create(user: ICreateUser): Promise<IUser | null> {
@@ -25,7 +26,7 @@ export default class UserService implements ICrudUser {
 
     public async login(user: IUserLogin ): Promise<{message: string}> {
         const { email, password } = user
-        const getUser = await UserModel.findOne({where: {email}})
+        const getUser = await UserModel.findOne({where: { email }})
 
         if (!getUser) return { message: 'ERROR' }
         if (!password || !compareSync(password, getUser.password)) {

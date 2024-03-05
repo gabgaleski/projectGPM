@@ -1,21 +1,24 @@
 import { createContext, useState, useMemo } from "react";
-import { ReactPropsType, ContextType, CarType } from "../Types/provierTypes";
+import { ReactPropsType, ContextType, CarType, userProfile } from "../Types/providerTypes";
 
 const initialValue = {
   searchCar: '',
   setSearchCar: () => {},
-  carList: [] as CarType[],
+  carList: [],
   setCarList: () => {},
-  filtredCars: [] as CarType[],
+  filtredCars: [],
   setFiltredCars: () => {},
+  userInfo: {} as userProfile,
+  setUserInfo: () => {},
 }
 
 export const InfosContext = createContext<ContextType>(initialValue);
 
 function ContextProvider({ children }: ReactPropsType) {
-  const [searchCar, setSearchCar] = useState(initialValue.searchCar);
-  const [carList, setCarList] = useState(initialValue.carList);
-  const [filtredCars, setFiltredCars] = useState(initialValue.filtredCars);
+  const [searchCar, setSearchCar] = useState<string>(initialValue.searchCar);
+  const [carList, setCarList] = useState<CarType[]>(initialValue.carList);
+  const [filtredCars, setFiltredCars] = useState<CarType[]>(initialValue.filtredCars);
+  const [userInfo, setUserInfo] = useState<userProfile>(initialValue.userInfo)
 
   const values = useMemo(() => ({
     searchCar,
@@ -23,14 +26,18 @@ function ContextProvider({ children }: ReactPropsType) {
     carList,
     setCarList,
     filtredCars,
-    setFiltredCars
+    setFiltredCars,
+    userInfo,
+    setUserInfo
   }), [
     searchCar,
     setSearchCar,
     carList,
     setCarList,
     filtredCars,
-    setFiltredCars
+    setFiltredCars,
+    userInfo,
+    setUserInfo
   ])
 
   return ( 
