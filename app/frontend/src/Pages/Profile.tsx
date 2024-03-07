@@ -5,6 +5,7 @@ import { InfosContext } from "../context/Context";
 import { MdEmail } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import Header from "../components/Header";
+import { userProfile } from "../Types/providerTypes";
 
 function Profile() {
     const navigate = useNavigate()
@@ -28,7 +29,19 @@ function Profile() {
         requestUser()
     }, [navigate, requestUser])
 
-    return ( 
+    const initialValueProfile: userProfile = {
+        email: '',
+        username: '',
+        role: '',
+    }
+
+    const logoutButton = (): void => {
+        localStorage.removeItem("token")
+        setUserInfo(initialValueProfile)
+        navigate('/')
+    }
+
+    return (
       <section>
         <Header />
         <h1>Profile</h1>
@@ -36,6 +49,10 @@ function Profile() {
         <p>Nome: { userInfo.username }</p>
         <MdEmail size={25} />
         <p>Email: { userInfo.email }</p>
+        <button
+        type="button"
+        onClick={logoutButton}
+        >Deslogar</button>
       </section>
      );
 }

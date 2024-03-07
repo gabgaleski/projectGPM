@@ -8,7 +8,11 @@ const initialValue = {
   setCarList: () => {},
   filtredCars: [],
   setFiltredCars: () => {},
-  userInfo: {} as userProfile,
+  userInfo: {
+    email: '',
+    role: '',
+    username: ''
+  },
   setUserInfo: () => {},
 }
 
