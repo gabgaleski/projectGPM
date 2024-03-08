@@ -24,4 +24,16 @@ export default class RentalCarService implements ICrudRentalCar {
 
         return {message: "SUCCESS"}
     }
+
+    public async findCarsByUser(id: number): Promise<IRentalCar[] | null> {
+        const getRentalCars = await RentalCarModel.findAll({where: {userId: id},
+        include: [{
+            model: CarModel,
+            as: "car"
+        }]
+        })
+        if (getRentalCars.length === 0) return null
+
+        return getRentalCars;
+    }
 }

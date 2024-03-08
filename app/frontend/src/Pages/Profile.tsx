@@ -40,7 +40,7 @@ function Profile() {
         setUserInfo(initialValueProfile)
         navigate('/')
     }
-
+            // Pegar os carros alugados na rota rental-cars/user
     return (
       <section>
         <Header />

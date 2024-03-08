@@ -12,6 +12,10 @@ ValidateUser.validateToken,
 ValidateUser.adminUser,
 (req: Request, res: Response) => rentalCarController.findAll(req, res));
 
+router.get("/user",
+ValidateUser.validateToken,
+(req: Request, res: Response) => rentalCarController.findCarsByUser(req, res))
+
 router.post('/:carId',
 ValidateUser.validateToken,
 ValidateUser.adminUser,
