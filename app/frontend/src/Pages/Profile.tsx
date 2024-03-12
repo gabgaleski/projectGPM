@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { requestData, setToken } from "../services/requests";
 import { useNavigate } from "react-router-dom";
 import { InfosContext } from "../context/Context";
@@ -6,10 +6,12 @@ import { MdEmail } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import Header from "../components/Header";
 import { userProfile } from "../Types/providerTypes";
+import { RentalCarType } from "../Types/rentalCarType";
 
 function Profile() {
     const navigate = useNavigate()
     const { userInfo, setUserInfo } = useContext(InfosContext)
+    const [userCarsInfo, setUserCarsInfo] = useState<RentalCarType[]>([])
 
     const requestUser = useCallback(async() => {
         try {
@@ -22,12 +24,24 @@ function Profile() {
         }
     }, [setUserInfo, navigate])
 
+    const requestRentalCars = useCallback(async () => {
+        try {
+            const responseCars = await requestData('/rental-cars/user');
+            if (responseCars.data.message !== "No cars listed") {
+                return setUserCarsInfo(responseCars.data);
+            }
+        } catch (error) {
+            return alert("Erro")
+        }
+    }, [])
+
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) return navigate('/login')
         setToken(token)
         requestUser()
-    }, [navigate, requestUser])
+        requestRentalCars()
+    }, [navigate, requestUser, requestRentalCars])
 
     const initialValueProfile: userProfile = {
         email: '',

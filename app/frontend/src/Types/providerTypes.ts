@@ -18,7 +18,7 @@ export type CarType = {
   brand: string;
   images: string;
   value: number;
-  carDetails: CarDetails
+  carDetails?: CarDetails
 }
 
 export type userProfile = {
