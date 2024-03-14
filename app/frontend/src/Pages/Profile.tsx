@@ -10,70 +10,75 @@ import { RentalCarType } from "../Types/rentalCarType";
 import RentalCarCards from "../components/RentalCarsCard";
 
 function Profile() {
-    const navigate = useNavigate()
-    const { userInfo, setUserInfo } = useContext(InfosContext)
-    const [userCarsInfo, setUserCarsInfo] = useState<RentalCarType[]>([])
+  const navigate = useNavigate();
+  const { userInfo, setUserInfo } = useContext(InfosContext);
+  const [userCarsInfo, setUserCarsInfo] = useState<RentalCarType[]>([]);
 
-    const requestUser = useCallback(async() => {
-        try {
-            const response = await requestData('/users')
-            return setUserInfo(response.data)
-        } catch (error) {
-            localStorage.removeItem("token")
-            alert("Realize o login")
-            navigate('/')
-        }
-    }, [setUserInfo, navigate])
-
-    const requestRentalCars = useCallback(async () => {
-        try {
-            const responseCars = await requestData('/rental-cars/user');
-            if (responseCars.data.message !== "No cars listed") {
-                return setUserCarsInfo(responseCars.data);
-            }
-        } catch (error) {
-            return alert("Erro")
-        }
-    }, [])
-
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (!token) return navigate('/login')
-        setToken(token)
-        requestUser()
-        requestRentalCars()
-    }, [navigate, requestUser, requestRentalCars])
-
-    const initialValueProfile: userProfile = {
-        email: '',
-        username: '',
-        role: '',
+  const requestUser = useCallback(async () => {
+    try {
+      const response = await requestData("/users");
+      return setUserInfo(response.data);
+    } catch (error) {
+      localStorage.removeItem("token");
+      alert("Realize o login");
+      navigate("/");
     }
+  }, [setUserInfo, navigate]);
 
-    const logoutButton = (): void => {
-        localStorage.removeItem("token")
-        setUserInfo(initialValueProfile)
-        navigate('/')
+  const requestRentalCars = useCallback(async () => {
+    try {
+      const responseCars = await requestData("/rental-cars/user");
+      if (responseCars.data.message !== "No cars listed") {
+        return setUserCarsInfo(responseCars.data);
+      }
+    } catch (error) {
+      return alert("Erro");
     }
+  }, []);
 
-    return (
-      <section>
-        <Header />
-        <h1>Profile</h1>
-        <FaUserCircle size={25} />
-        <p>Nome: { userInfo.username }</p>
-        <MdEmail size={25} />
-        <p>Email: { userInfo.email }</p>
-        <button
-        type="button"
-        onClick={ logoutButton }
-        >Deslogar</button>
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return navigate("/login");
+    setToken(token);
+    requestUser();
+    requestRentalCars();
+  }, [navigate, requestUser, requestRentalCars]);
+
+  const initialValueProfile: userProfile = {
+    email: "",
+    username: "",
+    role: "",
+  };
+
+  const logoutButton = (): void => {
+    localStorage.removeItem("token");
+    setUserInfo(initialValueProfile);
+    navigate("/");
+  };
+
+  // Implementar mensagem de "sem carros alugados ainda" caso nao tenha carros alugados ou historico
+
+  return (
+    <section>
+      <Header />
+      <h1>Profile</h1>
+      <FaUserCircle size={25} />
+      <p>Nome: {userInfo.username}</p>
+      <MdEmail size={25} />
+      <p>Email: {userInfo.email}</p>
+      <button type="button" onClick={logoutButton}>
+        Deslogar
+      </button>
+      {userCarsInfo.length === 0 ? (
+        <h2>Sem carros alugados ainda...</h2>
+      ) : (
         <div>
-            <h2>Carros Alugados</h2>
-            {userCarsInfo.map((car) => RentalCarCards(car))}
+          <h2>Historico de Carros</h2>
+          {userCarsInfo.map((car) => RentalCarCards(car))}
         </div>
-      </section>
-     );
+      )}
+    </section>
+  );
 }
 
 export default Profile;

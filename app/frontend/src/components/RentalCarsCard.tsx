@@ -13,6 +13,7 @@ function RentalCarCards(car: RentalCarType) {
   const options = { minimumIntegerDigits: 2 };
 
   // Mudar o Layout das datas
+  // Implementar se o aluguel ta ativo ou nao
 
   return ( 
   <div key={car.id}>
