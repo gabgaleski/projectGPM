@@ -7,6 +7,7 @@ import { FaUserCircle } from "react-icons/fa";
 import Header from "../components/Header";
 import { userProfile } from "../Types/providerTypes";
 import { RentalCarType } from "../Types/rentalCarType";
+import RentalCarCards from "../components/RentalCarsCard";
 
 function Profile() {
     const navigate = useNavigate()
@@ -54,7 +55,7 @@ function Profile() {
         setUserInfo(initialValueProfile)
         navigate('/')
     }
-            // Pegar os carros alugados na rota rental-cars/user
+
     return (
       <section>
         <Header />
@@ -65,8 +66,12 @@ function Profile() {
         <p>Email: { userInfo.email }</p>
         <button
         type="button"
-        onClick={logoutButton}
+        onClick={ logoutButton }
         >Deslogar</button>
+        <div>
+            <h2>Carros Alugados</h2>
+            {userCarsInfo.map((car) => RentalCarCards(car))}
+        </div>
       </section>
      );
 }
