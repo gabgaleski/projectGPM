@@ -1,5 +1,12 @@
+import Header from "../components/Header";
+
 function About() {
-    return ( <h1>About</h1> );
+    return ( 
+        <section>
+            <Header />
+            <h1>About</h1>
+        </section>
+     );
 }
 
 export default About;

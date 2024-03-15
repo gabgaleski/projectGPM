@@ -56,8 +56,6 @@ function Profile() {
     navigate("/");
   };
 
-  // Implementar mensagem de "sem carros alugados ainda" caso nao tenha carros alugados ou historico
-
   return (
     <section>
       <Header />

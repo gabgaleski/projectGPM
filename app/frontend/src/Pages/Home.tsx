@@ -9,6 +9,8 @@ import { requestData } from "../services/requests";
 function Home() {
   const { carList, setCarList } = useContext(InfosContext);
 
+  // list.split(' ')[0] para pegar a primeira imagem
+
   const requestCars = useCallback(async() => {
     const { data } = await requestData('/cars');
     setCarList(data)
