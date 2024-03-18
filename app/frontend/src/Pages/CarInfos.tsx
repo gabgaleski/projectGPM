@@ -19,10 +19,10 @@ function CarInfos() {
         setCarInfo(data)
     }, [id, navigate])
 
+
   useEffect(() => {
     requestInfosCar()
   }, [requestInfosCar])
-
 
   if (!carInfo || !carInfo.carDetails) {
     return (<p>Loading...</p>)
@@ -57,11 +57,18 @@ function CarInfos() {
         }
       }}
       >
-        <p>Voce esta alugando um: <strong>{carInfo.name}</strong></p>
-        <img src={carInfo.images} alt="Imagem do carro" />
-        <p>Valor por dia e quantidade de dias</p>
-        <p>Falando sobre a forma de alguel e garantias</p>
-        <p>Informaçoes para o aluguel em um forms</p>
+        <div>
+          <p>Voce esta alugando um: <strong>{carInfo.name}</strong></p>
+          <p>Valor por dia e quantidade de dias</p>
+          <p>Falando sobre a forma de alguel e garantias</p>
+          <p>Informaçoes para o aluguel em um forms</p>
+        </div>
+        <div>
+          <label htmlFor="initial">Retirada do carro</label>
+          <input id="initial" type="date" />
+          <label htmlFor="final">Devolutiva do carro</label>
+          <input id="final" type="date" />
+        </div>
         <button>ALUGAR</button>
         <button onClick={() => setOpenModal(false)}>SAIR</button>
       </ReactModal>

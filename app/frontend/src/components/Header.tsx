@@ -26,6 +26,7 @@ function Header() {
       </div>
       <nav className='nav-header'>
         <ul className='nav-car'>
+          <Link to="/" className='nav-link'>Inicio</Link>
           <Link to="/cars" className='nav-link'>Carros Disponiveis</Link>
           <Link to="/about" className='nav-link'>Sobre a Alucar</Link>
         </ul>

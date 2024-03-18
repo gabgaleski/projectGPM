@@ -8,7 +8,7 @@ export default {
         status: 0,
         description: 'Carro ideal para a familia',
         brand: 'Renault',
-        images: 'https://w7.pngwing.com/pngs/217/579/png-transparent-renault-kwid-car-dacia-logan-fiat-mobi-renault-compact-car-car-vehicle.png',
+        images: 'https://brfrance.com.br/uploads/products/versions/colors/kwid-2022-intense-02.png',
         value: 58.99
       },
       {
