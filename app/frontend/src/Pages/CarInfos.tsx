@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { requestData } from "../services/requests";
 import { CarType } from "../Types/providerTypes";
@@ -10,6 +10,8 @@ function CarInfos() {
     const navigate = useNavigate()
     const [carInfo, setCarInfo] = useState<CarType>({} as CarType)
     const [openModal, setOpenModal] = useState<boolean>(false);
+    const initialDate = useRef<string | null>(null)
+    const finalDate = useRef<string | null>(null)
 
     const requestInfosCar = useCallback(async () => {
         const { data } = await requestData(`/cars/${id}`)
@@ -19,10 +21,34 @@ function CarInfos() {
         setCarInfo(data)
     }, [id, navigate])
 
+    // Continuar alguel do carro com registro no backend e confirmação no pagamento
+    // Mudar Ref por state
+    // Futuramente trocar os states que podem ser ref por ref
+
+    const rentalCarButton = () => {
+      if (!initialDate.current || !finalDate.current) {
+        return alert('Preencha as datas')
+      }
+      const formatedInitial = new Date(initialDate.current)
+      const formatedFinal = new Date(finalDate.current)
+
+      if (formatedInitial > formatedFinal || formatedInitial < new Date()) {
+        return alert('Preencha as datas corretamente')
+      }
+
+      const days = Math.abs(formatedFinal.getDate() - formatedInitial.getDate())
+      const value = days * carInfo.value
+      alert(`O valor total do aluguel é de R$ ${value}`)
+    }
+
 
   useEffect(() => {
     requestInfosCar()
-  }, [requestInfosCar])
+    if (!openModal) {
+      initialDate.current = null
+      finalDate.current = null
+    }
+  }, [requestInfosCar, openModal])
 
   if (!carInfo || !carInfo.carDetails) {
     return (<p>Loading...</p>)
@@ -65,11 +91,21 @@ function CarInfos() {
         </div>
         <div>
           <label htmlFor="initial">Retirada do carro</label>
-          <input id="initial" type="date" />
+          <input
+          id="initial"
+          type="date"
+          itemRef="initialDate"
+          onChange={(e) => initialDate.current = e.target.value}
+          />
           <label htmlFor="final">Devolutiva do carro</label>
-          <input id="final" type="date" />
+          <input
+          id="final"
+          type="date"
+          itemRef="finalDate"
+          onChange={(e) => finalDate.current = e.target.value}
+          />
         </div>
-        <button>ALUGAR</button>
+        <button onClick={rentalCarButton} >ALUGAR</button>
         <button onClick={() => setOpenModal(false)}>SAIR</button>
       </ReactModal>
     </section>
